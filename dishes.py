@@ -42,7 +42,7 @@ class Dish_Day(db.Model):
 @app.route('/')
 def front_page():
     dish_doer = get_proper_dish_doer()
-    return render_template("index.html", dish_doer=dish_doer)
+    return render_template("index.html", dish_doer=dish_doer.name)
 
 
 def get_proper_dish_doer():
@@ -95,3 +95,7 @@ def get_following_dish_date(last_dish_day):
 
 def get_most_recent_dish_day():
     return Dish_Day.query.order_by(Dish_Day.date.desc()).first()
+
+
+if __name__ == '__main__':
+    app.run()
